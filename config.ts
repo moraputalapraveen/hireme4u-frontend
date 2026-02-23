@@ -1,8 +1,13 @@
 // config.ts - Central configuration for your app
 
+const local='http://localhost:5000/api'
+  const prod ='https://hireme4u.onrender.com'
+
+
 const config = {
   // Change this ONE line when deploying
-  apiUrl: 'http://localhost:5000/api',
+ 
+  apiUrl: prod,
   
   // You can add more config here later
   appName: 'HireMe4U',
