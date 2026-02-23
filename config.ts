@@ -1,7 +1,7 @@
 // config.ts - Central configuration for your app
 
 const local='http://localhost:5000/api'
-  const prod ='https://hireme4u.onrender.com'
+  const prod ='https://hireme4u.onrender.com/api'
 
 
 const config = {
