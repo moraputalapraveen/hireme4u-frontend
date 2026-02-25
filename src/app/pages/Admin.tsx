@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useJobs } from '../context/JobContext';
 import { toast } from 'sonner';
 import { Plus, LogIn } from 'lucide-react';
-import config from '../config';
+import { BulkUpload } from '../components/BluckUpload';
 
 // Secret URL pattern - change this to your preferred secret
 const SECRET_PATH = '/admin/secret123';
@@ -177,7 +177,8 @@ export function Admin() {
               <LogIn className="w-8 h-8 text-blue-600" />
               <h1 className="text-3xl font-bold text-gray-900">Admin Login</h1>
             </div>
-
+              <div className="mt-8">
+              </div>
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
                 <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
@@ -236,6 +237,8 @@ export function Admin() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <BulkUpload />
+
         <div className="bg-white rounded-lg shadow-md p-8 border border-gray-200">
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-3">

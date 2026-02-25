@@ -17,14 +17,8 @@ export function Footer() {
               experienced developers. Connecting talent with opportunities since 2026.
             </p>
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                <span>praveenmoraputala@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <span>+91 6300470930</span>
-              </div>
+              
+              
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
                 <span>Hyderabad, India</span>

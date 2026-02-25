@@ -202,20 +202,14 @@ export function Privacy() {
                 <div className="bg-blue-100 p-2 rounded-full">
                   <Mail className="w-5 h-5 text-blue-600" />
                 </div>
-                <div>
-                  <p className="text-sm text-gray-600">Email</p>
-                  <p className="font-medium text-gray-900">praveenmoraputala@gmail.com</p>
-                </div>
+               
               </div>
               
               <div className="flex items-center gap-3">
                 <div className="bg-blue-100 p-2 rounded-full">
                   <Phone className="w-5 h-5 text-blue-600" />
                 </div>
-                <div>
-                  <p className="text-sm text-gray-600">Phone</p>
-                  <p className="font-medium text-gray-900">+91 6300470930</p>
-                </div>
+
               </div>
               
               <div className="flex items-center gap-3">
