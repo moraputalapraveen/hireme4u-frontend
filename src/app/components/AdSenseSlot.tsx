@@ -12,20 +12,15 @@ export function AdSenseSlot({ variant, className = '' }: AdSenseSlotProps) {
   const mobileRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
 
-  // Function to load script
   const loadScript = (
     ref: React.RefObject<HTMLDivElement>, 
     key: string, 
     width: number, 
     height: number
   ) => {
-    // Check if ref.current exists
     if (!ref || !ref.current) return;
-
-    // Clear any existing content
     ref.current.innerHTML = '';
 
-    // Create and set atOptions
     const atOptions = document.createElement('script');
     atOptions.type = 'text/javascript';
     atOptions.innerHTML = `
@@ -39,7 +34,6 @@ export function AdSenseSlot({ variant, className = '' }: AdSenseSlotProps) {
     `;
     ref.current.appendChild(atOptions);
 
-    // Create and load the invoke script
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = `https://www.highperformanceformat.com/${key}/invoke.js`;
@@ -47,35 +41,35 @@ export function AdSenseSlot({ variant, className = '' }: AdSenseSlotProps) {
     ref.current.appendChild(script);
   };
 
-  // Load banner ad
+  // Banner 468x60 (ID: 28700529)
   useEffect(() => {
     if (variant === 'banner') {
       loadScript(bannerRef, '9ef143c745dfa101b368366a0caa0ed5', 468, 60);
     }
   }, [variant]);
 
-  // Load sidebar ad
+  // Sidebar 300x250 (ID: 28700966)
   useEffect(() => {
     if (variant === 'sidebar') {
       loadScript(sidebarRef, 'e39630edcccbea70e7a41b946a5561b2', 300, 250);
     }
   }, [variant]);
 
-  // Load in-content ad
+  // In-content - NOW USING SKYSCRAPER 160x600 (ID: 28700985)
   useEffect(() => {
     if (variant === 'in-content') {
-      loadScript(inContentRef, 'e39630edcccbea70e7a41b946a5561b2', 300, 250);
+      loadScript(inContentRef, '253522eb73b2ee61720be806349f52ba', 160, 600);
     }
   }, [variant]);
 
-  // Load mobile ad
+  // Mobile 320x50 (ID: 28700976)
   useEffect(() => {
     if (variant === 'mobile') {
       loadScript(mobileRef, 'b181a800e7a3653e842707340db9c66a', 320, 50);
     }
   }, [variant]);
 
-  // Load social bar
+  // Social Bar (ID: 28700676)
   useEffect(() => {
     if (variant === 'social') {
       if (!socialRef.current) return;
@@ -112,7 +106,7 @@ export function AdSenseSlot({ variant, className = '' }: AdSenseSlotProps) {
   if (variant === 'in-content') {
     return (
       <div className={`my-6 flex justify-center ${className}`}>
-        <div className="w-[300px] h-[250px]">
+        <div className="w-[160px] h-[600px] mx-auto"> {/* Skyscraper size */}
           <div ref={inContentRef}></div>
         </div>
       </div>
