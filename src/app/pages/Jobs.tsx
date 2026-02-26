@@ -75,7 +75,7 @@ export function Jobs() {
       params.append('page', pagination.page.toString());
       params.append('limit', '10');
 
-      const response = await axios.get(`${config.apiUrl}/jobs`);
+const response = await axios.get(`${config.apiUrl}/jobs?${params.toString()}`);
       
       if (response.data.success) {
         setJobs(response.data.jobs);
