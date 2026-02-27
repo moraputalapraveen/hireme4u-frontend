@@ -1,7 +1,7 @@
 // config.ts - Central configuration for your app
 
 const local='http://localhost:5000/api'
-  const prod ='http://13.51.197.202/api'
+  const prod ='https://13.51.197.202.nip.io/api'
 
 
 const config = {
