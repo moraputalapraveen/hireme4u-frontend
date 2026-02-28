@@ -15,9 +15,9 @@ import { BlogDetail } from './pages/BlogDetail';
 import { Tools } from './pages/Tools';
 import { NotFound } from './pages/NotFound';
 import { AlertVerified } from './pages/AlertVerified';
-import { AlertUnsubscribed } from './pages/AlertUnSubscribed';
-import { AdminEmail } from './pages/AdminEmail';
+import { AlertUnsubscribed } from './pages/AlertUnsubscribed'; 
 import { CategoryJobs } from './pages/CategoryJobs';
+import { AdminEmail } from './pages/AdminEmail';
 
 export function AppRoutes() {
   return (
