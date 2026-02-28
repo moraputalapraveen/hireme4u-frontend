@@ -26,6 +26,83 @@ interface Job {
   postedDate: string;
 }
 
+export function JobPostingSchema({ job }) {
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": job.title,
+      "description": job.description,
+      "identifier": { 
+        "@type": "PropertyValue", 
+        "name": job.company, 
+        "value": job._id 
+      },
+      "datePosted": job.postedDate,
+      "validThrough": new Date(new Date(job.postedDate).setDate(new Date(job.postedDate).getDate() + 30)).toISOString().split('T')[0],
+      "employmentType": job.jobType.toUpperCase().replace('-', '_'),
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": job.company,
+        "sameAs": job.companyWebsite || ""
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": job.location.split(',')[0].trim(),
+          "addressRegion": job.location.includes(',') ? job.location.split(',')[1].trim() : "",
+          "addressCountry": "IN"
+        }
+      },
+      "applicantLocationRequirements": {
+        "@type": "Country",
+        "name": "IN"
+      },
+      "jobLocationType": job.jobType === "Remote" ? "TELECOMMUTE" : "",
+      "baseSalary": job.salary ? {
+        "@type": "MonetaryAmount",
+        "currency": "INR",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": job.salary.replace(/[^0-9-]/g, ''),
+          "unitText": "YEAR"
+        }
+      } : undefined,
+      "experienceRequirements": {
+        "@type": "OccupationalExperienceRequirements",
+        "monthsOfExperience": getExperienceMonths(job.experienceLevel)
+      },
+      "skills": job.requirements.join(', ')
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    script.id = 'job-posting-schema';
+    
+    const existingScript = document.getElementById('job-posting-schema');
+    if (existingScript) existingScript.remove();
+    
+    document.head.appendChild(script);
+    
+    return () => document.getElementById('job-posting-schema')?.remove();
+  }, [job]);
+
+  return null;
+}
+
+function getExperienceMonths(level) {
+  switch(level) {
+    case 'Fresher': return 0;
+    case '0-1 years': return 6;
+    case '1-3 years': return 24;
+    case '3-5 years': return 48;
+    case '5+ years': return 72;
+    default: return 0;
+  }
+}
+
 export function JobDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -33,6 +110,8 @@ export function JobDetail() {
   const [job, setJob] = useState<Job | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -215,6 +294,8 @@ export function JobDetail() {
         <AdSenseSlot variant="banner" />
       </div>
 
+
+{job && <JobPostingSchema job={job} />}
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
