@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hireme4you.vercel.app/sitemap.xml

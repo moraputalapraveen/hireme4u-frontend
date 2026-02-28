@@ -7,6 +7,7 @@ import { AdSenseSlot } from '../components/AdSenseSlot';
 import { SEO } from '../components/SEO';
 import axios from 'axios';
 import config from '../../../config';
+import { JobAlerts } from '../components/JobAlerts';
 
 interface AnalyticsStats {
   totalViews: number;
@@ -228,6 +229,15 @@ export function Home() {
         </div>
       </section>
 
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+     
+    <div className="lg:col-span-1">
+      <JobAlerts />
+    </div>
+  </div>
+</section>
+
       {/* Featured Jobs Section - Enhanced */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white/50 rounded-3xl">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
@@ -235,6 +245,7 @@ export function Home() {
             <h2 className="text-4xl font-bold text-gray-900 mb-2">Latest Job Openings</h2>
             <p className="text-xl text-gray-600">Recently posted opportunities for you</p>
           </div>
+          
           <Link
             to="/jobs"
             className="group flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg"
@@ -257,6 +268,8 @@ export function Home() {
           </div>
         )}
       </section>
+
+     
 
       {/* Why Choose Us Section - Enhanced */}
       <section className="bg-gradient-to-br from-gray-50 to-white py-20 mt-16">

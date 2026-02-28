@@ -14,6 +14,10 @@ import { Blog } from './pages/Blog';
 import { BlogDetail } from './pages/BlogDetail';
 import { Tools } from './pages/Tools';
 import { NotFound } from './pages/NotFound';
+import { AlertVerified } from './pages/AlertVerified';
+import { AlertUnsubscribed } from './pages/AlertUnSubscribed';
+import { AdminEmail } from './pages/AdminEmail';
+import { CategoryJobs } from './pages/CategoryJobs';
 
 export function AppRoutes() {
   return (
@@ -27,6 +31,10 @@ export function AppRoutes() {
         {/* Secret admin routes */}
         <Route path="admin/secret123" element={<Admin />} />
         <Route path="admin/dashboard" element={<AdminDashboard />} /> {/* Add this */}
+        <Route path="admin/email" element={<AdminEmail />} />
+      <Route path="jobs/:category/:location" element={<CategoryJobs />} />
+<Route path="jobs/remote/:category" element={<CategoryJobs />} />
+<Route path="jobs/fresher/:location" element={<Freshers />} /> 
         
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
@@ -36,6 +44,8 @@ export function AppRoutes() {
         <Route path="blog/:id" element={<BlogDetail />} />
         <Route path="tools" element={<Tools />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="alerts/verified" element={<AlertVerified />} />
+<Route path="alerts/unsubscribed" element={<AlertUnsubscribed />} />
       </Route>
     </Routes>
   );

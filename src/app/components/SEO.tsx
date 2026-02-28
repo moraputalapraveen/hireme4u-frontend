@@ -8,38 +8,23 @@ interface SEOProps {
   ogImage?: string;
 }
 
-export function SEO({ title, description, keywords, ogImage }: SEOProps) {
-  const location = useLocation();
-  const fullTitle = `${title} | JobPortal`;
-  const url = `https://jobportal.com${location.pathname}`;
-
-  useEffect(() => {
-    // Update title
-    document.title = fullTitle;
-
-    // Update or create meta tags
-    updateMetaTag('description', description);
-    updateMetaTag('keywords', keywords || 'jobs, careers, freshers, developers, job search, employment');
-
-    // Open Graph tags
-    updateMetaTag('og:title', fullTitle, 'property');
-    updateMetaTag('og:description', description, 'property');
-    updateMetaTag('og:url', url, 'property');
-    updateMetaTag('og:type', 'website', 'property');
-    if (ogImage) {
-      updateMetaTag('og:image', ogImage, 'property');
-    }
-
-    // Twitter Card tags
-    updateMetaTag('twitter:card', 'summary_large_image', 'name');
-    updateMetaTag('twitter:title', fullTitle, 'name');
-    updateMetaTag('twitter:description', description, 'name');
-    if (ogImage) {
-      updateMetaTag('twitter:image', ogImage, 'name');
-    }
-  }, [fullTitle, description, keywords, url, ogImage]);
-
-  return null;
+export function SEO({ title, description, keywords, ogImage, canonical }) {
+  // Add canonical URL
+  if (canonical) {
+    updateMetaTag('canonical', canonical, 'rel');
+  }
+  
+  // Add Open Graph for job sharing
+  updateMetaTag('og:type', 'website', 'property');
+  updateMetaTag('og:title', title, 'property');
+  updateMetaTag('og:description', description, 'property');
+  updateMetaTag('og:url', window.location.href, 'property');
+  updateMetaTag('og:site_name', 'HireMe4U', 'property');
+  
+  // Twitter cards
+  updateMetaTag('twitter:card', 'summary_large_image');
+  updateMetaTag('twitter:title', title);
+  updateMetaTag('twitter:description', description);
 }
 
 function updateMetaTag(name: string, content: string, attribute: string = 'name') {

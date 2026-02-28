@@ -52,17 +52,13 @@ export function Navbar() {
               </Link>
             ))}
             
-            {/* ONLY Show Post Job button when admin is logged in */}
-            {isAdmin && (
-              <Link
-                to="/admin/secret123"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Post Job
-              </Link>
-            )}
-            
-            {/* NO LOGIN BUTTON HERE - Login only via direct URL */}
+              {isAdmin && (
+              <>
+                <Link to="/admin">Post Job</Link>
+                <Link to="/admin/email">Email Subscribers</Link>
+                <Link to="/admin/dashboard">Analytics</Link>
+              </>
+              )}
           </div>
 
           {/* Mobile Menu Button */}
