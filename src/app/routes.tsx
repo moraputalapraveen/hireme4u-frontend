@@ -5,7 +5,6 @@ import { Jobs } from './pages/Jobs';
 import { JobDetail } from './pages/JobDetail';
 import { Freshers } from './pages/Freshers';
 import { Admin } from './pages/Admin';
-import { AdminDashboard } from './pages/AdminDashboard';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Privacy } from './pages/Privacy';
@@ -18,6 +17,8 @@ import { AlertVerified } from './pages/AlertVerified';
 import { AlertUnsubscribed } from './pages/AlertUnsubscribed'; 
 import { CategoryJobs } from './pages/CategoryJobs';
 import { AdminEmail } from './pages/AdminEmail';
+import { AnalyticsDashboard } from './components/AnlyticsDashboard';
+import { AdminDashboard } from './pages/AdminDashboard';
 
 export function AppRoutes() {
   return (
@@ -31,7 +32,7 @@ export function AppRoutes() {
         {/* ✅ FIXED: Add main admin route */}
         <Route path="admin" element={<Admin />} />
         <Route path="admin/secret123" element={<Admin />} />
-        <Route path="admin/dashboard" element={<AdminDashboard />} />
+        <Route path="admin/dashboard" element={<AdminDashboard />}/>
         <Route path="admin/email" element={<AdminEmail />} />
         
         <Route path="jobs/:category/:location" element={<CategoryJobs />} />

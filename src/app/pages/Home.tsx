@@ -32,19 +32,34 @@ export function Home() {
     fetchAnalyticsStats();
   }, []);
 
-  const trackEvent = async (eventType: string, eventData: string) => {
-    try {
-      await axios.post(`${config.apiUrl}/analytics/track`, {
-        eventType,
-        eventData,
-        url: window.location.pathname,
-        timestamp: new Date()
-      });
-    } catch (error) {
-      console.error('Analytics error:', error);
+const trackEvent = async (eventType: string, eventData: string) => {
+  try {
+    // Only track allowed event types
+    const allowedEvents = [
+      'page_view', 
+      'search', 
+      'application_click', 
+      'bookmark', 
+      'share', 
+      'category_click'
+    ];
+    
+    if (!allowedEvents.includes(eventType)) {
+      console.warn(`⚠️ Event type "${eventType}" not tracked (not in allowed list)`);
+      return;
     }
-  };
-
+    
+    await axios.post(`${config.apiUrl}/api/analytics/track`, {
+      eventType,
+      eventData,
+      url: window.location.pathname,
+      timestamp: new Date()
+    });
+    console.log(`✅ Analytics tracked: ${eventType}`);
+  } catch (error) {
+    console.error('Analytics error:', error);
+  }
+};
   const fetchAnalyticsStats = async () => {
     try {
       const response = await axios.get(`${config.apiUrl}/analytics/stats`);
