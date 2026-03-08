@@ -72,8 +72,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">contact@Hireme4u.com</p>
-                    <p className="text-gray-600">support@Hireme4u.com</p>
+                    <p className="text-gray-600">hireme4you4@gmail.com@</p>
                   </div>
                 </div>
 
@@ -81,25 +80,14 @@ export function Contact() {
                   <div className="bg-blue-100 p-3 rounded-lg">
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+91 123 456 7890</p>
-                    <p className="text-gray-600">Mon-Fri: 9AM - 6PM IST</p>
-                  </div>
+                 
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="bg-blue-100 p-3 rounded-lg">
                     <MapPin className="w-6 h-6 text-blue-600" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Office</h3>
-                    <p className="text-gray-600">
-                      123 Business Park<br />
-                      MG Road, Bangalore<br />
-                      Karnataka 560001, India
-                    </p>
-                  </div>
+                 
                 </div>
               </div>
 
